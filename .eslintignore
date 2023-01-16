@@ -1,0 +1,3 @@
+src/txt_ws_translator/txtToWhiteSpaceParser.ts
+src/ws_js_translator/wsToJsParser.ts
+src/ws_machine_translator/wsToMachineLikeParser.ts
