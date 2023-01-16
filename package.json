@@ -1,0 +1,40 @@
+{
+  "name": "whitespaceinterpretor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "init": "npm run genParser",
+    "genParser": "npm run genParser:txtToWS && npm run genParser:wsToMachineLike && npm run genParser:wsToJS",
+    "genParser:txtToWS": "npx peggy --plugin ./node_modules/ts-pegjs/src/tspegjs -o  ./src/txt_ws_translator/txtToWhiteSpaceParser.ts ./src/txt_ws_translator/grammer/grammer.pegjs",
+    "genParser:wsToMachineLike": "npx peggy --plugin ./node_modules/ts-pegjs/src/tspegjs -o  ./src/ws_machine_translator/wsToMachineLikeParser.ts ./src/ws_machine_translator/grammer/grammer.pegjs",
+    "genParser:wsToJS": "npx peggy --plugin ./node_modules/ts-pegjs/src/tspegjs --extra-options-file ./src/ws_js_translator/grammer/grammer-config.json -o  ./src/ws_js_translator/wsToJsParser.ts ./src/ws_js_translator/grammer/grammer.pegjs",
+    "sample:txtToWs": "npx ts-node ./src/txt_ws_translator/translatorSample.ts ./src/txt_ws_translator/sample_input/helloWorld.wstxt ./src/txt_ws_translator/sample_input/fizzbuzz.wstxt",
+    "sample:wsToWsmf": "npx ts-node ./src/ws_machine_translator/translatorSample.ts ./src/ws_machine_translator/sample_input/helloWorld.ws ./src/ws_machine_translator/sample_input/fizzbuzz.ws",
+    "sample:wsToJs": "npx ts-node ./src/ws_js_translator/translatorSample.ts ./src/ws_js_translator/sample_input/helloWorld.ws ./src/ws_js_translator/sample_input/fizzbuzz.ws",
+    "sample": "npm run sample:txtToWs && npm run sample:wsToWsmf && npm run sample:wsToJs",
+    "test": "npx prettier --write ./src/**/*.ts && npx eslint --fix ./src/**/*.ts && npm run init && npx jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^29.2.4",
+	"@types/estree": "^1.0.0",
+    "@types/pegjs": "^0.10.3",
+    "@typescript-eslint/eslint-plugin": "^5.46.1",
+    "@typescript-eslint/parser": "^5.46.1",
+    "eslint": "^8.29.0",
+    "jest": "^29.3.1",
+    "prettier": "^2.8.1",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.1.1",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "commander": "^9.4.1",
+    "escodegen": "^2.0.0",
+    "peggy": "^2.0.1",
+    "ts-pegjs": "^2.1.0"
+  }
+}

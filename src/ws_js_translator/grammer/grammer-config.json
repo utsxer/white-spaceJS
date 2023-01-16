@@ -1,0 +1,7 @@
+{
+	"tspegjs":{
+		"customHeader":[
+			"import {Push,Dup,Copy,Swap,Discard,Slide,Add,Sub,Mul,Div,Mod,Store,Retrieve,Mark,Call,Jmp,Jmpz,Jmpn,Ends,End,ReadChar,ReadNum,PutChar,PutNum} from 'ws_js_translator/parserClasses'"
+		]
+	}
+}

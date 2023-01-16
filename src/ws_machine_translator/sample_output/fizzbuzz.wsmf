@@ -1,0 +1,55 @@
+push 0
+push 15
+push 14
+push 13
+push 12
+push 11
+push 10
+push 9
+push 8
+push 7
+push 6
+push 5
+push 4
+push 3
+push 2
+push 1
+mark T
+push 15
+copy 2
+mod
+jmpz TS
+push 3
+copy 2
+mod
+jmpz TSS
+push 5
+copy 2
+mod
+jmpz TST
+dup
+put_num
+jmp TTS
+mark TS
+push 70
+put_char
+push 66
+put_char
+jmp TTS
+mark TSS
+push 70
+put_char
+jmp TTS
+mark TST
+push 66
+put_char
+jmp TTS
+mark TTS
+push 10
+put_char
+discard
+dup
+jmpz TTT
+jmp T
+mark TTT
+end
